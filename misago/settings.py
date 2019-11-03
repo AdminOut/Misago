@@ -39,7 +39,7 @@ DEBUG = os.getenv("DEBUG")
 # A list of strings representing the host/domain names that this Django site can serve.
 # If you are unsure, just enter here your domain name, eg. ['mysite.com', 'www.mysite.com']
 
-ALLOWED_HOSTS = os.getenv("DJANGO_SECRET_KEY", "root@localhost.com").split(",")
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "root@localhost.com").split(",")
 
 
 # Database
