@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y \
 # Add requirements and install them. We do this unnecessasy rebuilding.
 WORKDIR /srv/misago
 
-COPY ./misago .
+COPY . .
 
 RUN pip install --upgrade pip && \
     pip install -r requirements.txt && \
