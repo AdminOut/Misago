@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
     gettext
 
 # Add requirements and install them. We do this unnecessasy rebuilding.
-WORKDIR /srv/misago
+WORKDIR /srv/medcube
 
 COPY . .
 
