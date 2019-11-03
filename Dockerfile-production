@@ -28,6 +28,9 @@ RUN pip install --upgrade pip && \
 
 EXPOSE 8000
 
-ENTRYPOINT['entrypoint.sh']
+COPY entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/entrypoint.sh
+# Housekeeping
+ENTRYPOINT ["entrypoint.sh"]
 
 CMD gunicorn --bind 0.0.0.0:8000 misago.wsgi:application
