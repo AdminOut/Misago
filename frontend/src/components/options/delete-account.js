@@ -33,7 +33,7 @@ export default class extends React.Component {
     const { isLoading, password } = this.state
     const { user } = this.props
 
-    if (password.length == 0) {
+    if (password.length === 0) {
       snackbar.error(
         gettext("Enter your password to confirm account deletion.")
       )

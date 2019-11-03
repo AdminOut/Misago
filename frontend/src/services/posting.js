@@ -25,25 +25,25 @@ export class Posting {
       let message = gettext(
         "You are already working on other message. Do you want to discard it?"
       )
-      if (this._mode == "POLL") {
+      if (this._mode === "POLL") {
         message = gettext(
           "You are already working on a poll. Do you want to discard it?"
         )
       }
 
-      const changeForm = confirm(message)
+      const changeForm = window.confirm(message)
       if (changeForm) {
         this._mode = props.mode
         this._isOpen = props.submit
         this._realOpen(props)
       }
-    } else if (this._mode == "REPLY" && props.mode == "REPLY") {
+    } else if (this._mode === "REPLY" && props.mode === "REPLY") {
       this._realOpen(props)
     }
   }
 
   _realOpen(props) {
-    if (props.mode == "POLL") {
+    if (props.mode === "POLL") {
       mount(<PollForm {...props} />, "posting-mount")
     } else {
       mount(<PostingComponent {...props} />, "posting-mount")

@@ -1,0 +1,19 @@
+---
+# Load docker image from source and deploy
+- name: Create nginx conf directory
+  file:
+    path: "{{ HOME_DIR }}/data/nginx/conf.d"
+    state: directory
+    recurse: yes
+
+- name: Copy nginx root configuration
+  template:
+    src: nginx.conf.j2
+    dest: "{{ HOME_DIR }}/data/nginx/nginx.conf"
+    mode: '0644'
+
+- name: Copy nginx web configuration (backend and frontend)
+  template:
+    src: conf.d/site.conf.j2
+    dest: "{{ HOME_DIR }}/data/nginx/conf.d/medcube.conf"
+    mode: '0644'

@@ -1,0 +1,33 @@
+FROM python:3.7
+
+ENV PYTHONUNBUFFERED 1
+ENV IN_MISAGO_DOCKER 1
+
+# Install dependencies in one single command/layer
+RUN apt-get update && apt-get install -y \
+    vim \
+    libffi-dev \
+    libssl-dev \
+    sqlite3 \
+    libjpeg-dev \
+    libopenjp2-7-dev \
+    locales \
+    cron \
+    postgresql-client \
+    gettext
+
+# Add requirements and install them. We do this unnecessasy rebuilding.
+WORKDIR /srv/misago
+
+COPY ./misago .
+
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt && \
+    pip install -r requirements-plugins.txt && \
+    pip install -r requirements-production.txt
+
+EXPOSE 8000
+
+ENTRYPOINT['entrypoint.sh']
+
+CMD gunicorn --bind 0.0.0.0:8000 misago.wsgi:application

@@ -1,0 +1,10 @@
+---
+# This playbook to deploy docker compose project.
+
+- name: Configurations to "remote" host
+  hosts: "{{ target }}"
+  gather_facts: yes
+  become: yes
+  roles:
+   # - role: initialize_certbot
+    - role: initialize_project

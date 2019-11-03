@@ -11,6 +11,7 @@ import modal from "misago/services/modal"
 import snackbar from "misago/services/snackbar"
 import store from "misago/services/store"
 import * as validators from "misago/utils/validators"
+import ErrorsModal from "misago/components/threads/moderation/errors-list"
 
 export default function(props) {
   return <PostingConfig {...props} Form={ModerationForm} />
@@ -215,7 +216,7 @@ export class ModerationForm extends Form {
       }
     ]
 
-    if (this.acl[this.state.category].can_pin_threads == 2) {
+    if (this.acl[this.state.category].can_pin_threads === 2) {
       choices.push({
         value: 2,
         icon: "bookmark",

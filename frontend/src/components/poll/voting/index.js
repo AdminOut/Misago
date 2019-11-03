@@ -54,7 +54,7 @@ export default class extends Form {
 
     return this.state.choices.map(choice => {
       return Object.assign({}, choice, {
-        selected: choice.hash == hash ? true : choice.selected
+        selected: choice.hash === hash ? true : choice.selected
       })
     })
   }
@@ -62,7 +62,7 @@ export default class extends Form {
   deselectChoice = (choice, hash) => {
     return this.state.choices.map(choice => {
       return Object.assign({}, choice, {
-        selected: choice.hash == hash ? false : choice.selected
+        selected: choice.hash === hash ? false : choice.selected
       })
     })
   }

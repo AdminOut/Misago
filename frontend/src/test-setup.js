@@ -34,7 +34,7 @@ $("body").append('<div id="test-mount"></div>')
   var django = globals.django || (globals.django = {})
 
   django.pluralidx = function(count) {
-    return count == 1 ? 0 : 1
+    return count === 1 ? 0 : 1
   }
 
   /* gettext identity library */
@@ -43,7 +43,7 @@ $("body").append('<div id="test-mount"></div>')
     return msgid
   }
   django.ngettext = function(singular, plural, count) {
-    return count == 1 ? singular : plural
+    return count === 1 ? singular : plural
   }
   django.gettext_noop = function(msgid) {
     return msgid
@@ -52,7 +52,7 @@ $("body").append('<div id="test-mount"></div>')
     return msgid
   }
   django.npgettext = function(context, singular, plural, count) {
-    return count == 1 ? singular : plural
+    return count === 1 ? singular : plural
   }
 
   django.interpolate = function(fmt, obj, named) {
@@ -101,7 +101,7 @@ $("body").append('<div id="test-mount"></div>')
 
   django.get_format = function(format_type) {
     var value = django.formats[format_type]
-    if (typeof value == "undefined") {
+    if (typeof value === "undefined") {
       return format_type
     } else {
       return value

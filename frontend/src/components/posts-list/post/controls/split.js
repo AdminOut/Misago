@@ -11,9 +11,10 @@ import modal from "misago/services/modal"
 import snackbar from "misago/services/snackbar"
 import store from "misago/services/store"
 import * as validators from "misago/utils/validators"
+import ErrorsModal from "misago/components/threads/moderation/errors-list"
 
 export default function(props) {
-  return <PostingConfig {...props} Form={ModerationForm} />
+  return <PostingConfig {...props} Form={ModerationForm}/>
 }
 
 export class PostingConfig extends React.Component {
@@ -56,13 +57,13 @@ export class PostingConfig extends React.Component {
 
   render() {
     if (this.state.isError) {
-      return <Error message={this.state.isError} />
+      return <Error message={this.state.isError}/>
     } else if (this.state.isLoaded) {
       return (
-        <ModerationForm {...this.props} categories={this.state.categories} />
+        <ModerationForm {...this.props} categories={this.state.categories}/>
       )
     } else {
-      return <Loader />
+      return <Loader/>
     }
   }
 }
@@ -172,7 +173,7 @@ export class ModerationForm extends Form {
       })
       snackbar.error(gettext("Form contains errors."))
     } else if (rejection.status === 403 && Array.isArray(rejection)) {
-      modal.show(<ErrorsModal errors={rejection} />)
+      modal.show(<ErrorsModal errors={rejection}/>)
     } else {
       snackbar.apiError(rejection)
     }
@@ -213,7 +214,7 @@ export class ModerationForm extends Form {
       }
     ]
 
-    if (this.acl[this.state.category].can_pin_threads == 2) {
+    if (this.acl[this.state.category].can_pin_threads === 2) {
       choices.push({
         value: 2,
         icon: "bookmark",
@@ -310,7 +311,7 @@ export class ModerationForm extends Form {
                 value={this.state.title}
               />
             </FormGroup>
-            <div className="clearfix" />
+            <div className="clearfix"/>
 
             <FormGroup
               label={gettext("Category")}
@@ -326,7 +327,7 @@ export class ModerationForm extends Form {
                 choices={this.state.categories}
               />
             </FormGroup>
-            <div className="clearfix" />
+            <div className="clearfix"/>
 
             {this.renderWeightField()}
             {this.renderHiddenField()}
@@ -346,7 +347,7 @@ export class ModerationForm extends Form {
 export function Loader() {
   return (
     <Modal className="modal-dialog">
-      <ModalLoader />
+      <ModalLoader/>
     </Modal>
   )
 }

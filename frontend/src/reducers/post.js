@@ -37,7 +37,7 @@ export function patch(post, patch) {
 export default function post(state = {}, action = null) {
   switch (action.type) {
     case PATCH_POST:
-      if (state.id == action.post.id) {
+      if (state.id === action.post.id) {
         return Object.assign({}, state, action.patch)
       }
       return state

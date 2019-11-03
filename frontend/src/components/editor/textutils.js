@@ -23,7 +23,7 @@ export function getSelection() {
     const length = range.text.length
     range.moveStart("character", -ctrl.value.length)
     return getSelectionRange(range.text.length - length, range.text.length)
-  } else if (ctrl.selectionStart || ctrl.selectionStart == "0") {
+  } else if (ctrl.selectionStart || ctrl.selectionStart === "0") {
     return getSelectionRange(ctrl.selectionStart, ctrl.selectionEnd)
   }
 }

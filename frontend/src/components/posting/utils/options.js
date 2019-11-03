@@ -132,7 +132,7 @@ export function PinOptions(props) {
       onClick = props.onPinGlobally
       label = gettext("Pinned locally")
 
-      if (props.show == 2) {
+      if (props.show === 2) {
         onClick = props.onPinGlobally
       } else {
         onClick = props.onUnpin

@@ -1,0 +1,3 @@
+TEMP_DIR: "{{ ansible_env.HOME }}/tmp"
+LETSENCRYPT_EMAIL: lance@adminout.net
+HOME_DIR: /home/admin

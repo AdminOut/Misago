@@ -1,0 +1,48 @@
+---
+# Install a new certbot certificate
+
+- name: Create temporary build directory
+  tempfile:
+    state: directory
+  register: temp_dir
+
+
+- name: Copy certbot entrypoint
+  template:
+    src: initialize-certbot.sh.j2
+    dest: "{{ temp_dir.path }}/initialize-certbot.sh"
+    mode: '0544'
+
+- name: Copy nginx conf
+  template:
+    src: site.conf.j2
+    dest: "{{ temp_dir.path }}/site.conf"
+    mode: '0444'
+
+- name: Start certbot initialization containers
+  docker_compose:
+    project_name: "{{ PROJECT_NAME }}"
+    definition:
+      version: '3'
+      services:
+
+        nginx:
+          image: nginx:alpine
+          ports:
+            - 80:80
+          volumes:
+            - "webroot:/var/www/certbot"
+            - "{{ temp_dir.path }}/site.conf:/etc/nginx/conf.d/site.conf:ro"
+
+        certbot:
+          image: certbot/certbot
+          entrypoint: /initialize-certbot.sh
+          depends_on:
+            - nginx
+          volumes:
+            - "{{ HOME_DIR }}/data/certbot/conf:/etc/letsencrypt"
+            - "webroot:/var/www/certbot"
+            - "{{ temp_dir.path }}/initialize-certbot.sh:/initialize-certbot.sh"
+
+      volumes:
+        webroot: {}

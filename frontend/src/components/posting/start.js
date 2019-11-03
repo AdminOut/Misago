@@ -55,7 +55,7 @@ export default class extends Form {
       // pick first category that allows posting and if it may, override it with initial one
       if (
         item.post !== false &&
-        (!category || item.id == this.state.category)
+        (!category || item.id === this.state.category)
       ) {
         category = item.id
         categoryOptions = item.post
@@ -89,7 +89,7 @@ export default class extends Form {
   }
 
   onCancel = () => {
-    const cancel = confirm(gettext("Are you sure you want to discard thread?"))
+    const cancel = window.confirm(gettext("Are you sure you want to discard thread?"))
     if (cancel) {
       posting.close()
     }
@@ -101,7 +101,7 @@ export default class extends Form {
 
   onCategoryChange = event => {
     const category = this.state.categories.find(item => {
-      return event.target.value == item.value
+      return event.target.value === item.value
     })
 
     // if selected pin is greater than allowed, reduce it

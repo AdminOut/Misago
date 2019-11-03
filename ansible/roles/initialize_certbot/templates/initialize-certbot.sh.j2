@@ -1,0 +1,21 @@
+#!/bin/sh
+set -e
+
+# Wait for nginx
+while ! nc -w 1 -z nginx 80; do
+    >&2 echo "Nginx is unavailable - sleeping"
+    sleep 1;
+done;
+>&2 echo "Nginx is up - continuing..."
+
+# Request certbot certificate
+certbot certonly \
+--webroot -w /var/www/certbot \
+--email "{{ LETSENCRYPT_EMAIL }}" \
+-d {{ DOMAIN_NAME }} \
+--agree-tos \
+--force-renewal \
+--no-eff-email \
+--non-interactive
+
+exec "$@"

@@ -103,7 +103,7 @@ export default function thread(state = [], action = null) {
         ) {
           // same or sub category
           return true
-        } else if (item.weight == 2) {
+        } else if (item.weight === 2) {
           // globally pinned
           return true
         } else {

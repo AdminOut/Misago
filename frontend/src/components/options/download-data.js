@@ -100,7 +100,7 @@ export default class DownloadData extends React.Component {
                   </tr>
                 )
               })}
-              {this.state.downloads.length == 0 ? (
+              {this.state.downloads.length === 0 ? (
                 <tr>
                   <td colSpan="2">{gettext("You have no data downloads.")}</td>
                 </tr>

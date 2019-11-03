@@ -71,7 +71,7 @@ export default function posts(state = {}, action = null) {
   switch (action.type) {
     case SELECT_POST:
       const selectedPosts = state.results.map(post => {
-        if (post.id == action.post.id) {
+        if (post.id === action.post.id) {
           return Object.assign({}, post, {
             isSelected: true
           })
@@ -86,7 +86,7 @@ export default function posts(state = {}, action = null) {
 
     case DESELECT_POST:
       const deseletedPosts = state.results.map(post => {
-        if (post.id == action.post.id) {
+        if (post.id === action.post.id) {
           return Object.assign({}, post, {
             isSelected: false
           })

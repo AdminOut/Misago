@@ -174,7 +174,7 @@ export class LikesCompact extends Likes {
 export function getLikesMessage(likes, users) {
   const usernames = users.slice(0, 3).map(u => u.username)
 
-  if (usernames.length == 1) {
+  if (usernames.length === 1) {
     return interpolate(
       gettext("%(user)s likes this."),
       {

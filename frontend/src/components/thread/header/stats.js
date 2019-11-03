@@ -7,14 +7,14 @@ const LAST_REPLY =
   '<abbr class="last-title" title="%(absolute)s">%(relative)s</abbr>'
 
 export function Weight(props) {
-  if (props.thread.weight == 2) {
+  if (props.thread.weight === 2) {
     return (
       <li className="thread-pinned-globally">
         <span className="material-icon">bookmark</span>
         <span className="icon-legend">{gettext("Pinned globally")}</span>
       </li>
     )
-  } else if (props.thread.weight == 1) {
+  } else if (props.thread.weight === 1) {
     return (
       <li className="thread-pinned-locally">
         <span className="material-icon">bookmark_border</span>

@@ -247,16 +247,16 @@ export function IsDisabledMessage({ isActive, isDeletingAccount }) {
 export function getColStyle(cols, col) {
   let colStyle = ""
 
-  if (cols == 1) {
+  if (cols === 1) {
     colStyle = "col-xs-12"
   }
 
-  if (cols == 2) {
+  if (cols === 2) {
     colStyle = "col-xs-6 col-sm-6"
   }
 
-  if (cols == 3) {
-    if (col == 2) {
+  if (cols === 3) {
+    if (col === 2) {
       colStyle = "col-xs-12 col-sm-4 xs-margin-top"
     } else {
       colStyle += "col-xs-6 col-sm-4"

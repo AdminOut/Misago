@@ -55,5 +55,9 @@ pylint.txt
 # Django stuff:
 *.log
 *.pot
-.env
+
+# Vagrant
 .vagrant
+
+# dotenv
+.env
