@@ -404,5 +404,18 @@ MISAGO_PROFILE_FIELDS = [
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
+# Django storages
+# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html
+USE_S3 = os.getenv("DJANGO_USE_S3")
+if USE_S3:
+    DEFAULT_FILE_STORAGE = os.getenv("DJANGO_DEFAULT_FILE_STORAGE")
+    STATICFILES_STORAGE = os.getenv("DJANGO_STATICFILES_STORAGE")
+    AWS_ACCESS_KEY_ID = os.getenv("DJANGO_AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = os.getenv("DJANGO_AWS_SECRET_ACCESS_KEY")
+    AWS_DEFAULT_ACL = os.getenv("DJANGO_AWS_DEFAULT_ACL")
+    AWS_STORAGE_BUCKET_NAME = os.getenv("DJANGO_AWS_STORAGE_BUCKET_NAME")
+    AWS_S3_CUSTOM_DOMAIN = os.getenv("DJANGO_AWS_CUSTOM_DOMAIN")
+    AWS_S3_REGION_NAME = os.getenv("DJANGO_AWS_S3_REGION_NAME")
+
 
 INSTALLED_APPS += ["gunicorn"]

@@ -1,2 +1,4 @@
 gunicorn==19.9.0
 python-memcached==1.59
+boto3==1.12.36
+django-storages==1.9.1
