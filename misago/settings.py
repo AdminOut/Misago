@@ -236,7 +236,7 @@ MIDDLEWARE = [
     "misago.threads.middleware.UnreadThreadsCountMiddleware",
 ]
 
-ROOT_URLCONF = "devproject.urls"
+ROOT_URLCONF = "misago.urls"
 
 SOCIAL_AUTH_STRATEGY = "misago.socialauth.strategy.MisagoStrategy"
 
@@ -312,7 +312,7 @@ TEMPLATES = [
     }
 ]
 
-WSGI_APPLICATION = "devproject.wsgi.application"
+WSGI_APPLICATION = "misago.wsgi.application"
 
 
 # Django Rest Framework
