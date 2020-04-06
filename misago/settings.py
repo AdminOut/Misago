@@ -33,7 +33,7 @@ _ = lambda s: s
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "local")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG")
+DEBUG = os.getenv("DEBUG", False)
 
 
 # A list of strings representing the host/domain names that this Django site can serve.
