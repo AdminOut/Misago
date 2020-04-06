@@ -420,4 +420,4 @@ if USE_S3:
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
-INSTALLED_APPS += ["gunicorn"]
+INSTALLED_APPS += ["gunicorn", "medcube"]
