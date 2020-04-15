@@ -166,6 +166,7 @@ PLUGINS_LIST_PATH = os.path.join(os.path.dirname(BASE_DIR), "plugins.txt")
 INSTALLED_PLUGINS = load_plugin_list_if_exists(PLUGINS_LIST_PATH) or []
 
 INSTALLED_APPS = INSTALLED_PLUGINS + [
+    "medcube",
     # Misago overrides for Django core feature
     "misago",
     "misago.users",
